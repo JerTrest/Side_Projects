@@ -360,14 +360,11 @@ def indexAfterSym(equation,indexOfSym):
     count=0
     return indexOfAfterSym
 
-
-    
 inputNum=Entry(window)
 inputNum.grid(row=0,column=0,columnspan=3)
 
 backBtn=Button(window,text="<--",command=back)
 backBtn.grid(row=0,column=3,sticky=W)
-
 
 OneBtn=Button(window,text="1",command=one)
 OneBtn.grid(row=2,column=0,sticky=W)
@@ -399,8 +396,6 @@ NineBtn.grid(row=4,column=2,sticky=W)
 ZeroBtn=Button(window,text="0",command=zero)
 ZeroBtn.grid(row=5,column=1,sticky=W)
 
-
-
 par1Btn=Button(window,text="(",command=parenth1)
 par1Btn.grid(row=1, column=1,sticky=W)
 
@@ -413,8 +408,6 @@ decBtn.grid(row=5, column=2,sticky=W)
 expoBtn=Button(window,text="^",command=expo)
 expoBtn.grid(row=1, column=0,sticky=W)
 
-
-
 addBtn=Button(window,text="+",command=add)
 addBtn.grid(row=1,column=3,sticky=W)
 
@@ -426,7 +419,6 @@ multBtn.grid(row=3,column=3,sticky=W)
 
 divBtn=Button(window,text="/",command=div)
 divBtn.grid(row=4,column=3,sticky=W)
-
 
 clearBtn=Button(window,text="CE",command=clear_text)
 clearBtn.grid(row=5,column=0,sticky=W)
