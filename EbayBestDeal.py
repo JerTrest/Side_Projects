@@ -1,3 +1,7 @@
+#This program searches Ebay to find the cheapest item you search for, as well as the best deals on that item
+#Input the item you would like to search for (make sure spelling is correct) and the number of pages you would like to search through on Ebay
+#Then open the links you would like to see 
+
 import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -7,9 +11,6 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import os
-
-#PATH="C:\Program Files (x86)\chromedriver.exe"
-#driver=webdriver.Chrome(PATH) 
 
 chrome_options=Options()
 PATH="C:\Program Files (x86)\chromedriver.exe"
@@ -36,10 +37,6 @@ def bestPercentDiscount(current_prices,past_prices):
             bestIndex=index
     return bestIndex
 
-def testWordsInDescription(keyWords,description):
-    for index in range(len(keyWords)):
-        pass
-
 print("\n")
 searchKey=str(input("What item are you looking for? "))
 
@@ -52,8 +49,6 @@ past_prices=[]
 current_prices=[]
 links=[]
 pageCounter=0
-fixerCount=0
-checkPrice=""
 currentUrl="https://www.ebay.com/"
 
 driver.get(currentUrl)
@@ -64,20 +59,6 @@ searchBtn=driver.find_element_by_id("gh-btn")
 searchBtn.click()
 
 
-
-#try:
-#    buyNowBtn = WebDriverWait(driver, 10).until(
-#        EC.presence_of_element_located((By.LINK_TEXT, "New"))
-#    )
-#    buyNowBtn.click()
-
-#except:
-#    driver.quit()
-#    print("didnt work")
-
-
-itemCounter=0
-
 for count in range(pagesToSearch):
     currentUrl=driver.current_url
     webpage=requests.get(currentUrl)
@@ -87,7 +68,6 @@ for count in range(pagesToSearch):
     for item in soup.findAll('div',{"class":"s-item__info clearfix"}):
         for title in item.findAll('h3',{"class":"s-item__title"}):
             if all(index in title.getText().lower() for index in keyWords):
-                itemCounter+=1
 
                 for link in item.findAll('a',{"class":"s-item__link"}):
                     links.append(link.attrs['href'])
@@ -100,6 +80,7 @@ for count in range(pagesToSearch):
                         if "to" in current_price:
                             indexToCut=current_price.find("to")
                             current_price=current_price[:indexToCut-1]
+
                         if "," in current_price:
                             current_price=current_price.replace(",","")
                         current_price=float(current_price[1:])
@@ -111,9 +92,11 @@ for count in range(pagesToSearch):
                                 price_price=price_price.replace(",","")
                             past_price=float(past_price[1:])
                             past_prices.append(past_price)
+
                         if(len(current_prices)>len(past_prices)):
                             past_prices.append(0.0)
                         fixer+=1
+
                     else:
                         pass
                     
@@ -124,14 +107,12 @@ for count in range(pagesToSearch):
     nextBtn.click()
     pageCounter+=1
     print("\n"+"\n")
-    print("Page:",pageCounter)
+    print("Page",pageCounter,"Completed")
     print("\n"+"\n")
 
 
 print("Pages Searched:",pageCounter)
 print("Items Found Matching Input:",len(links))
-print(len(links),len(current_prices),len(past_prices),itemCounter)
-
 print("\n"+"\n")
 
 print("Cheapest:")
