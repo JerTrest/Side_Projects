@@ -83,26 +83,33 @@ for count in range(pagesToSearch):
                 fixer=0
                 for current_price in item.findAll("span",{"class":"s-item__price"}):
                     if fixer==0:
+
                         current_price=current_price.getText()
-                        if "to" in current_price:
-                            indexToCut=current_price.find("to")
-                            current_price=current_price[:indexToCut-1]
+                        if "." in current_price:
 
-                        if "," in current_price:
-                            current_price=current_price.replace(",","")
-                        current_price=float(current_price[1:])
-                        current_prices.append(current_price)
+                            if "to" in current_price:
+                                indexToCut=current_price.find("to")
+                                current_price=current_price[:indexToCut-1]
 
-                        for past_price in item.findAll("span",{"class":"STRIKETHROUGH"}):
-                            past_price=past_price.getText()
-                            if "," in past_price:
-                                price_price=price_price.replace(",","")
-                            past_price=float(past_price[1:])
-                            past_prices.append(past_price)
+                            if "," in current_price:
+                                current_price=current_price.replace(",","")
+                        
+                            current_price=float(current_price[1:])
+                            current_prices.append(current_price)
 
-                        if(len(current_prices)>len(past_prices)):
-                            past_prices.append(0.0)
-                        fixer+=1
+                            for past_price in item.findAll("span",{"class":"STRIKETHROUGH"}):
+                                past_price=past_price.getText()
+                                if "," in past_price:
+                                    price_price=price_price.replace(",","")
+                                past_price=float(past_price[1:])
+                                past_prices.append(past_price)
+
+                            if(len(current_prices)>len(past_prices)):
+                                past_prices.append(0.0)
+                            fixer+=1
+
+                        else:
+                            links=links[:len(links)-1]
 
                     else:
                         pass
@@ -125,8 +132,6 @@ for count in range(pagesToSearch):
             print("*There are only",pageCounter,"pages of that item on Ebay*")
             break
     
-
-
 print("Pages Searched:",pageCounter)
 print("Items Searched:",itemCounter)
 print("Items Found Matching Input:",len(links))
