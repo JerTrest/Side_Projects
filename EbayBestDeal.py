@@ -122,7 +122,7 @@ for count in range(pagesToSearch):
             nextBtn.click()
         except:
             print("\n"+"\n")
-            print("There are only",pageCounter,"pages of that item on Ebay")
+            print("*There are only",pageCounter,"pages of that item on Ebay*")
             break
     
 
