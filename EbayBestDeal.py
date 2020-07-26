@@ -100,7 +100,7 @@ for count in range(pagesToSearch):
                             for past_price in item.findAll("span",{"class":"STRIKETHROUGH"}):
                                 past_price=past_price.getText()
                                 if "," in past_price:
-                                    price_price=price_price.replace(",","")
+                                    past_price=past_price.replace(",","")
                                 past_price=float(past_price[1:])
                                 past_prices.append(past_price)
 
