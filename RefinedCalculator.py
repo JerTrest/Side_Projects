@@ -10,59 +10,8 @@ nums=["0","1","2","3","4","5","6","7","8","9"]
 wrong=["**","//","^^","..","*/","/*","/^,","^/","^*","*^","+*","*+","-*","+/","/+","-/","-^","^+","+^"]
 letters=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","x","y","z","w","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 
-def one():
-    inputNum.insert(len(inputNum.get()),"1")
-
-def two():
-    inputNum.insert(len(inputNum.get()),"2")
-
-def three():
-    inputNum.insert(len(inputNum.get()),"3")
-
-def four():
-    inputNum.insert(len(inputNum.get()),"4")
-
-def five():
-    inputNum.insert(len(inputNum.get()),"5")
-
-def six():
-    inputNum.insert(len(inputNum.get()),"6")
-
-def seven():
-    inputNum.insert(len(inputNum.get()),"7")
-
-def eight():
-    inputNum.insert(len(inputNum.get()),"8")
-
-def nine():
-    inputNum.insert(len(inputNum.get()),"9")
-
-def zero():
-    inputNum.insert(len(inputNum.get()),"0")
-
-def parenth1():
-    inputNum.insert(len(inputNum.get()),"(")
-
-def parenth2():
-    inputNum.insert(len(inputNum.get()),")")
-
-def dec():
-    inputNum.insert(len(inputNum.get()),".")
-
-def expo():
-    inputNum.insert(len(inputNum.get()),"^")
-
-def add():
-    inputNum.insert(len(inputNum.get()),"+")
-
-def sub():
-    inputNum.insert(len(inputNum.get()),"-")
-
-def mult():
-    inputNum.insert(len(inputNum.get()),"*")
-
-def div():
-    inputNum.insert(len(inputNum.get()),"/")
+def insertChar(num):
+    inputNum.insert(len(inputNum.get()),str(num))
 
 def clear_text():
     inputNum.delete(0,'end')
@@ -366,58 +315,58 @@ inputNum.grid(row=0,column=0,columnspan=3)
 backBtn=Button(window,text="<--",command=back)
 backBtn.grid(row=0,column=3,sticky=W)
 
-OneBtn=Button(window,text="1",command=one)
+OneBtn=Button(window,text="1",command=lambda:insertChar("1"))
 OneBtn.grid(row=2,column=0,sticky=W)
 
-TwoBtn=Button(window,text="2",command=two)
+TwoBtn=Button(window,text="2",command=lambda:insertChar("2"))
 TwoBtn.grid(row=2,column=1,sticky=W)
 
-ThreeBtn=Button(window,text="3",command=three)
+ThreeBtn=Button(window,text="3",command=lambda:insertChar("3"))
 ThreeBtn.grid(row=2,column=2,sticky=W)
 
-FourBtn=Button(window,text="4",command=four)
+FourBtn=Button(window,text="4",command=lambda:insertChar("4"))
 FourBtn.grid(row=3,column=0,sticky=W)
 
-FiveBtn=Button(window,text="5",command=five)
+FiveBtn=Button(window,text="5",command=lambda:insertChar("5"))
 FiveBtn.grid(row=3,column=1,sticky=W)
 
-SixBtn=Button(window,text="6",command=six)
+SixBtn=Button(window,text="6",command=lambda:insertChar("6"))
 SixBtn.grid(row=3,column=2,sticky=W)
 
-SevenBtn=Button(window,text="7",command=seven)
+SevenBtn=Button(window,text="7",command=lambda:insertChar("7"))
 SevenBtn.grid(row=4,column=0,sticky=W)
 
-EightBtn=Button(window,text="8",command=eight)
+EightBtn=Button(window,text="8",command=lambda:insertChar("8"))
 EightBtn.grid(row=4,column=1,sticky=W)
 
-NineBtn=Button(window,text="9",command=nine)
+NineBtn=Button(window,text="9",command=lambda:insertChar("9"))
 NineBtn.grid(row=4,column=2,sticky=W)
 
-ZeroBtn=Button(window,text="0",command=zero)
+ZeroBtn=Button(window,text="0",command=lambda:insertChar("0"))
 ZeroBtn.grid(row=5,column=1,sticky=W)
 
-par1Btn=Button(window,text="(",command=parenth1)
+par1Btn=Button(window,text="(",command=lambda:insertChar("("))
 par1Btn.grid(row=1, column=1,sticky=W)
 
-par2Btn=Button(window,text=")",command=parenth2)
+par2Btn=Button(window,text=")",command=lambda:insertChar(")"))
 par2Btn.grid(row=1, column=2,sticky=W)
 
-decBtn=Button(window,text=".",command=dec)
+decBtn=Button(window,text=".",command=lambda:insertChar("."))
 decBtn.grid(row=5, column=2,sticky=W)
 
-expoBtn=Button(window,text="^",command=expo)
+expoBtn=Button(window,text="^",command=lambda:insertChar("^"))
 expoBtn.grid(row=1, column=0,sticky=W)
 
-addBtn=Button(window,text="+",command=add)
+addBtn=Button(window,text="+",command=lambda:insertChar("+"))
 addBtn.grid(row=1,column=3,sticky=W)
 
-subBtn=Button(window,text="-",command=sub)
+subBtn=Button(window,text="-",command=lambda:insertChar("-"))
 subBtn.grid(row=2,column=3,sticky=W)
 
-multBtn=Button(window,text="*",command=mult)
+multBtn=Button(window,text="*",command=lambda:insertChar("*"))
 multBtn.grid(row=3,column=3,sticky=W)
 
-divBtn=Button(window,text="/",command=div)
+divBtn=Button(window,text="/",command=lambda:insertChar("/"))
 divBtn.grid(row=4,column=3,sticky=W)
 
 clearBtn=Button(window,text="CE",command=clear_text)
