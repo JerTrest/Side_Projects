@@ -1,2 +1,2 @@
 # Summer2020Projects
-Personal projects I made in the Summer of 2020. 
+Personal projects I made in the summer of 2020. 
